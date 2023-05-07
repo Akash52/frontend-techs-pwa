@@ -1,0 +1,8 @@
+[build]
+  publish = "dist/angular-rental-final"
+  command = "ng build --prod --base-href /angular-rental-final/"
+
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
