@@ -1,0 +1,413 @@
+<form
+  (ngSubmit)="submitForm(rentalForm)"
+  #rentalForm="ngForm"
+  class="px-4 py-6 bg-gray-100 rounded-lg shadow-md dark:bg-gray-800"
+>
+  <h2 class="text-xl font-bold mb-4 text-gray-700 dark:text-white">
+    {{ isNew ? "Create" : "Update" }} Rental
+  </h2>
+
+  <div
+    class="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 pt-6 gap-8"
+  >
+    <div class="flex flex-col h-12">
+      <label
+        for="property_type"
+        class="block text-sm font-medium text-gray-700 dark:text-gray-200"
+        >Property Type<span class="text-red-500">*</span></label
+      >
+      <input
+        type="text"
+        name="property_type"
+        [(ngModel)]="rental.property_type"
+        required
+        #propertyType="ngModel"
+        class="mt-1 block w-full rounded-md border border-gray-300 py-2 px-3 shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm dark:border-gray-600 dark:bg-gray-700 dark:text-gray-200"
+      />
+      <div
+        *ngIf="
+          propertyType.invalid && (propertyType.dirty || propertyType.touched)
+        "
+        class="text-red-500 text-xs italic"
+      >
+        <span *ngIf="propertyType.errors?.['required']"
+          >Property Type is required.</span
+        >
+      </div>
+    </div>
+    <div class="flex flex-col h-12">
+      <label
+        for="address"
+        class="block text-sm font-medium text-gray-700 dark:text-gray-200"
+        >Address<span class="text-red-500">*</span></label
+      >
+      <input
+        type="text"
+        name="address"
+        [(ngModel)]="rental.address"
+        required
+        #address="ngModel"
+        class="mt-1 block w-full rounded-md border border-gray-300 py-2 px-3 shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm dark:border-gray-600 dark:bg-gray-700 dark:text-gray-200"
+      />
+      <div
+        *ngIf="address.invalid && (address.dirty || address.touched)"
+        class="text-red-500 text-xs italic"
+      >
+        <span *ngIf="address.errors?.['required']">Address is required.</span>
+      </div>
+    </div>
+    <div class="flex flex-col h-12">
+      <label
+        for="city"
+        class="block text-sm font-medium text-gray-700 dark:text-gray-200"
+        >City<span class="text-red-500">*</span></label
+      >
+      <input
+        type="text"
+        name="city"
+        [(ngModel)]="rental.city"
+        required
+        #city="ngModel"
+        class="mt-1 block w-full rounded-md border border-gray-300 py-2 px-3 shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm dark:border-gray-600 dark:bg-gray-700 dark:text-gray-200"
+      />
+      <div
+        *ngIf="city.invalid && (city.dirty || city.touched)"
+        class="text-red-500 text-xs italic"
+      >
+        <span *ngIf="city.errors?.['required']">City is required.</span>
+      </div>
+    </div>
+    <div class="flex flex-col h-12">
+      <label
+        for="state"
+        class="block text-sm font-medium text-gray-700 dark:text-gray-200"
+        >State<span class="text-red-500">*</span></label
+      >
+      <input
+        type="text"
+        name="state"
+        [(ngModel)]="rental.state"
+        required
+        #state="ngModel"
+        class="mt-1 block w-full rounded-md border border-gray-300 py-2 px-3 shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm dark:border-gray-600 dark:bg-gray-700 dark:text-gray-200"
+      />
+      <div
+        *ngIf="state.invalid && (state.dirty || state.touched)"
+        class="text-red-500 text-xs italic"
+      >
+        <span *ngIf="state.errors?.['required']">State is required.</span>
+      </div>
+    </div>
+    <div class="flex flex-col h-12">
+      <label
+        for="zip_code"
+        class="block text-sm font-medium text-gray-700 dark:text-gray-200"
+        >Zip Code<span class="text-red-500">*</span></label
+      >
+      <input
+        type="text"
+        name="zip_code"
+        [(ngModel)]="rental.zip_code"
+        required
+        #zipCode="ngModel"
+        class="mt-1 block w-full rounded-md border border-gray-300 py-2 px-3 shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm dark:border-gray-600 dark:bg-gray-700 dark:text-gray-200"
+      />
+      <div
+        *ngIf="zipCode.invalid && (zipCode.dirty || zipCode.touched)"
+        class="text-red-500 text-xs italic"
+      >
+        <span *ngIf="zipCode.errors?.['required']">Zip Code is required.</span>
+      </div>
+    </div>
+    <div class="flex flex-col h-12">
+      <label
+        for="rental_price"
+        class="block text-sm font-medium text-gray-700 dark:text-gray-200"
+        >Rental Price($)<span class="text-red-500">*</span></label
+      >
+      <input
+        type="number"
+        name="rental_price"
+        [(ngModel)]="rental.rental_price"
+        required
+        #rentalPrice="ngModel"
+        class="mt-1 block w-full rounded-md border border-gray-300 py-2 px-3 shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm dark:border-gray-600 dark:bg-gray-700 dark:text-gray-200"
+      />
+      <div
+        *ngIf="
+          rentalPrice.invalid && (rentalPrice.dirty || rentalPrice.touched)
+        "
+        class="text-red-500 text-xs italic"
+      >
+        <span *ngIf="rentalPrice.errors?.['required']"
+          >Rental Price is required.</span
+        >
+      </div>
+    </div>
+    <div class="flex flex-col h-20">
+      <label
+        for="available_date"
+        class="block text-sm font-medium text-gray-700 dark:text-gray-200"
+        >Available Date<span class="text-red-500">*</span></label
+      >
+      <input
+        type="date"
+        name="available_date"
+        [(ngModel)]="rental.available_date"
+        required
+        #availableDate="ngModel"
+        class="mt-1 block w-full rounded-md border border-gray-300 py-2 px-3 shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm dark:border-gray-600 dark:bg-gray-700 dark:text-gray-200"
+      />
+      <div
+        *ngIf="
+          availableDate.invalid &&
+          (availableDate.dirty || availableDate.touched)
+        "
+        class="text-red-500 text-xs italic"
+      >
+        <span *ngIf="availableDate.errors?.['required']"
+          >Available Date is required.</span
+        >
+      </div>
+    </div>
+    <div class="flex flex-col h-12">
+      <label
+        for="image"
+        class="block text-sm font-medium text-gray-700 dark:text-gray-200"
+        >Image URL<span class="text-red-500">*</span></label
+      >
+      <input
+        type="text"
+        name="image"
+        [(ngModel)]="rental.image"
+        required
+        #image="ngModel"
+        class="mt-1 block w-full rounded-md border border-gray-300 py-2 px-3 shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm dark:border-gray-600 dark:bg-gray-700 dark:text-gray-200"
+      />
+      <div
+        *ngIf="image.invalid && (image.dirty || image.touched)"
+        class="text-red-500 text-xs italic"
+      >
+        <span *ngIf="image.errors?.['required']">Image URL is required.</span>
+      </div>
+    </div>
+    <div class="flex flex-col h-12">
+      <label
+        for="square_feet"
+        class="block text-sm font-medium text-gray-700 dark:text-gray-200"
+        >Square Feet<span class="text-red-500">*</span></label
+      >
+      <input
+        type="number"
+        name="square_feet"
+        [(ngModel)]="rental.square_feet"
+        required
+        #squareFeet="ngModel"
+        class="mt-1 block w-full rounded-md border border-gray-300 py-2 px-3 shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm dark:border-gray-600 dark:bg-gray-700 dark:text-gray-200"
+      />
+      <div
+        *ngIf="squareFeet.invalid && (squareFeet.dirty || squareFeet.touched)"
+        class="text-red-500 text-xs italic"
+      >
+        <span *ngIf="squareFeet.errors?.['required']"
+          >Square Feet is required.</span
+        >
+      </div>
+    </div>
+    <div class="flex flex-col h-12">
+      <label
+        for="bedrooms"
+        class="block text-sm font-medium text-gray-700 dark:text-gray-200"
+        >Bedrooms<span class="text-red-500">*</span></label
+      >
+      <input
+        type="number"
+        name="bedrooms"
+        [(ngModel)]="rental.bedrooms"
+        required
+        #bedrooms="ngModel"
+        class="mt-1 block w-full rounded-md border border-gray-300 py-2 px-3 shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm dark:border-gray-600 dark:bg-gray-700 dark:text-gray-200"
+      />
+      <div
+        *ngIf="bedrooms.invalid && (bedrooms.dirty || bedrooms.touched)"
+        class="text-red-500 text-xs italic"
+      >
+        <span *ngIf="bedrooms.errors?.['required']">Bedrooms is required.</span>
+      </div>
+    </div>
+    <div class="flex flex-col h-12">
+      <label
+        for="bathrooms"
+        class="block text-sm font-medium text-gray-700 dark:text-gray-200"
+        >Bathrooms<span class="text-red-500">*</span></label
+      >
+      <input
+        type="number"
+        name="bathrooms"
+        [(ngModel)]="rental.bathrooms"
+        required
+        #bathrooms="ngModel"
+        class="mt-1 block w-full rounded-md border border-gray-300 py-2 px-3 shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm dark:border-gray-600 dark:bg-gray-700 dark:text-gray-200"
+      />
+      <div
+        *ngIf="bathrooms.invalid && (bathrooms.dirty || bathrooms.touched)"
+        class="text-red-500 text-xs italic"
+      >
+        <span *ngIf="bathrooms.errors?.['required']"
+          >Bathrooms is required.</span
+        >
+      </div>
+    </div>
+    <div class="flex flex-col h-12">
+      <label
+        for="contact_name"
+        class="block text-sm font-medium text-gray-700 dark:text-gray-200"
+        >Contact Name<span class="text-red-500">*</span></label
+      >
+      <input
+        type="text"
+        name="contact_name"
+        [(ngModel)]="rental.contact_name"
+        required
+        #contactName="ngModel"
+        class="mt-1 block w-full rounded-md border border-gray-300 py-2 px-3 shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm dark:border-gray-600 dark:bg-gray-700 dark:text-gray-200"
+      />
+      <div
+        *ngIf="
+          contactName.invalid && (contactName.dirty || contactName.touched)
+        "
+        class="text-red-500 text-xs italic"
+      >
+        <span *ngIf="contactName.errors?.['required']"
+          >Contact Name is required.</span
+        >
+      </div>
+    </div>
+    <div class="flex flex-col h-12">
+      <label
+        for="contact_email"
+        class="block text-sm font-medium text-gray-700 dark:text-gray-200"
+        >Contact Email<span class="text-red-500">*</span></label
+      >
+      <input
+        type="email"
+        name="contact_email"
+        [(ngModel)]="rental.contact_email"
+        required
+        #contactEmail="ngModel"
+        class="mt-1 block w-full rounded-md border border-gray-300 py-2 px-3 shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm dark:border-gray-600 dark:bg-gray-700 dark:text-gray-200"
+      />
+      <div
+        *ngIf="
+          contactEmail.invalid && (contactEmail.dirty || contactEmail.touched)
+        "
+        class="text-red-500 text-xs italic"
+      >
+        <span *ngIf="contactEmail.errors?.['required']"
+          >Contact Email is required.</span
+        >
+        <span *ngIf="contactEmail.errors?.['required']"
+          >Invalid email format.</span
+        >
+      </div>
+    </div>
+    <div class="flex flex-col h-12">
+      <label
+        for="contact_phone"
+        class="block text-sm font-medium text-gray-700 dark:text-gray-200"
+        >Contact Phone<span class="text-red-500">*</span></label
+      >
+      <input
+        type="tel"
+        name="contact_phone"
+        [(ngModel)]="rental.contact_phone"
+        required
+        #contactPhone="ngModel"
+        class="mt-1 block w-full rounded-md border border-gray-300 py-2 px-3 shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm dark:border-gray-600 dark:bg-gray-700 dark:text-gray-200"
+      />
+      <div
+        *ngIf="
+          contactPhone.invalid && (contactPhone.dirty || contactPhone.touched)
+        "
+        class="text-red-500 text-xs italic"
+      >
+        <span *ngIf="contactPhone.errors?.['required']"
+          >Contact Phone is required.</span
+        >
+      </div>
+    </div>
+    <div class="flex items-center">
+      <div>
+        <div class="flex items-center h-5">
+          <label
+            for="furnished"
+            class="block text-sm font-medium text-gray-700 dark:text-gray-200"
+            >Furnished:</label
+          >
+          <input
+            type="checkbox"
+            name="furnished"
+            [(ngModel)]="rental.is_furnished"
+            class="ml-2 block w-full rounded-md border border-gray-300 py-2 px-3 shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm dark:border-gray-600 dark:bg-gray-700 dark:text-gray-200"
+            #furnished="ngModel"
+          />
+        </div>
+
+        <div
+          *ngIf="furnished.invalid && (furnished.dirty || furnished.touched)"
+          class="text-red-500 text-xs italic"
+        >
+          <span *ngIf="furnished.errors?.['required']"
+            >Furnished is required.</span
+          >
+        </div>
+      </div>
+      <div class="ml-4">
+        <div class="flex items-center h-5">
+          <label
+            for="pets_allowed"
+            class="block text-sm font-medium text-gray-700 dark:text-gray-200 whitespace-nowrap"
+            >Pets Allowed:</label
+          >
+          <input
+            type="checkbox"
+            name="pets_allowed"
+            [(ngModel)]="rental.pets_allowed"
+            class="ml-2 block w-full rounded-md border border-gray-300 py-2 px-3 shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm dark:border-gray-600 dark:bg-gray-700 dark:text-gray-200"
+            #petsAllowed="ngModel"
+          />
+        </div>
+
+        <div
+          *ngIf="
+            petsAllowed.invalid && (petsAllowed.dirty || petsAllowed.touched)
+          "
+          class="text-red-500 text-xs italic"
+        >
+          <span *ngIf="petsAllowed.errors?.['required']"
+            >Pets Allowed is required.</span
+          >
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="flex justify-end mt-6">
+    <button
+      type="button"
+      class="inline-flex justify-center rounded-md border border-gray-300 py-2 px-4 text-sm font-medium text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 dark:hover:bg-gray-600 dark:focus:ring-indigo-400 dark:focus:ring-offset-gray-800 dark:border-gray-600 dark:bg-gray-700 dark:text-gray-200"
+      (click)="onCancel()"
+    >
+      Cancel
+    </button>
+    <button
+      type="submit"
+      class="ml-3 inline-flex justify-center rounded-md border border-transparent bg-indigo-600 py-2 px-4 text-sm font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 dark:hover:bg-indigo-600 dark:focus:ring-indigo-400 dark:focus:ring-offset-gray-800 dark:border-gray-600 dark:bg-gray-700 dark:text-gray-200"
+      [ngClass]="{
+        'bg-gray-400 cursor-not-allowed': rentalForm.invalid
+      }"
+      [disabled]="rentalForm.invalid"
+    >
+      {{ isNew ? "Create Rental" : "Save Changes" }}
+    </button>
+  </div>
+</form>
