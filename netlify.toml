@@ -1,6 +1,7 @@
 [build]
+  command = "npm run build"
   publish = "dist/angular-rental-final"
-  command = "ng build --prod --base-href /angular-rental-final/"
+  functions = "functions"
 
 [[redirects]]
   from = "/*"
