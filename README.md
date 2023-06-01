@@ -1,4 +1,4 @@
-# sportswire
+# nuxt rental
 
 ## Build Setup
 
